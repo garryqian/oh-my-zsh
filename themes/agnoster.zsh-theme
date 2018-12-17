@@ -238,3 +238,6 @@ build_prompt() {
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
+
+# Patch the directory color with 'e' (blue) instead of 'G' (default foreground)
+export LSCOLORS="exfxcxdxbxegedabagacad"
