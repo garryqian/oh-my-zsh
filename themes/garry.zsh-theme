@@ -1,4 +1,8 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
+# 
+# Garry's theme based on agnoster with following customizations:
+# 1. Set directory color to blue make it easy to distinguish with file
+# 2. Set new line prompt
 #
 # agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for ZSH
@@ -224,6 +228,12 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+# Newline prommpt with user indication, # for priviledged and % for normal one
+# Refer to: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+prompt_newline() {
+  prompt_segment black default "%(!.%{%F{yellow}%}.)%#"
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
@@ -237,4 +247,13 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+build_next_prompt() {
+  prompt_newline
+  prompt_end
+}
+
+NEWLINE=$'\n'
+PROMPT='%{%f%b%k%}$(build_prompt) ${NEWLINE}$(build_next_prompt)'
+
+# Patch the directory color with 'e' (blue) instead of 'G' (default foreground)
+export LSCOLORS="exfxcxdxbxegedabagacad"
