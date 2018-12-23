@@ -3,6 +3,7 @@
 # Garry's theme based on agnoster with following customizations:
 # 1. Set directory color to blue make it easy to distinguish with file
 # 2. Set new line prompt
+# 3. Disable auto terminal title
 #
 # agnoster's Theme - https://gist.github.com/3712874
 # A Powerline-inspired theme for ZSH
@@ -257,3 +258,6 @@ PROMPT='%{%f%b%k%}$(build_prompt) ${NEWLINE}$(build_next_prompt)'
 
 # Patch the directory color with 'e' (blue) instead of 'G' (default foreground)
 export LSCOLORS="exfxcxdxbxegedabagacad"
+
+# Disable auto-setting terminal title
+DISABLE_AUTO_TITLE="true"
